@@ -1,0 +1,74 @@
+simple paints by
+Vaibhav Ranjan 
+
+
+import turtle
+
+speed = 3
+pen = 5
+
+wn = turtle.Screen()
+wn.title("Game")
+wn.bgcolor('Black')
+wn.setup(1000,500)
+wn.tracer(1)
+
+body = turtle.Turtle()
+body.speed(0)
+body.color('white')
+body.shape('triangle')
+body.penup()
+body.goto(0,-230)
+body.setheading(90)
+body.pensize(pen)
+
+def fast():
+                global speed
+                speed += 1
+def slow():
+                global speed
+                speed -= 1
+def stop():
+                global speed
+                speed = 0
+def left():
+                body.left(30)
+def right():
+                body.right(30)
+def start_writing():
+                body.pendown()
+def stop_writing():
+                body.penup()
+def thick():
+                global pen
+                pen += 1
+                body.pensize(pen)
+def thin():
+                global pen
+                if pen == 1:
+                                pen = 1
+                else:
+                                pen -= 1
+                body.pensize(pen)
+wn.listen()
+wn.onkey(fast, 'Up')
+wn.onkey(slow, 'Down')
+wn.onkey(stop,'space')
+wn.onkey(left, 'a')
+wn.onkey(right,'d')
+wn.onkey(start_writing, ' w')
+wn.onkey(stop_writing,'s')
+wn.onkey(thick,'Left')
+wn.onkey(thin,'Right')
+while True:
+
+                
+                body.forward(speed)
+
+
+                if body.xcor() > 480 or body.xcor() < -480 or body.ycor() > 240 or body.ycor() < -240:
+                                body.left(90)
+
+
+
+wn.mainloop()
